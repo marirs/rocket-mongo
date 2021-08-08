@@ -12,7 +12,7 @@ A Simple Skeleton API Rest server using [Rocket](https://rocket.rs/) with the ba
     - mongodb configurations
 - Use the `x-api-key` header to validate `API Keys`
 - `Restrict` a client connecting IP Addresses to the endpoints using `Allow ACL`
-- `Restrict` endpoints using the `Deny ACL`
+- `Restrict` endpoints using the `Allow ACL`
 
 ### Compile
 
