@@ -1,6 +1,6 @@
 [package]
 name = "rocketapi"
-version = "0.2.1"
+version = "0.3.1"
 description = "REST API Service using Rust & Rocket with MongoDB as backend"
 authors = ["Marirs <marirs@gmail.com>"]
 categories = ["web-programming"]
@@ -8,19 +8,19 @@ keywords = ["rocket", "rust", "rest", "api", "mongo", "database"]
 readme = "README.md"
 license-file = "LICENSE"
 repository = "https://github.com/marirs/rocket-mongo"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
-clap ="3.0.0-beta.2"
+clap = { version = "3.0.14", features = ["cargo", "derive"] }
 chrono = { version = "0.4.19", features = ["serde"] }
 config = "0.11.0"
-futures = "0.3.16"
-openssl = "0.10.35"
+futures = "0.3.19"
+openssl = { version = "0.10.38", features = ["vendored"] }
 rocket = { version = "0.5.0-rc.1", features = ["json", "secrets", "tls"] }
-serde = { version = "1.0.127", features = ["derive"] }
-thiserror = "1.0.26"
-derive_more = { version = "0.99.16", features = ["deref"] }
-uuid = { version = "0.8.2", features = ["v5"] }
+serde = { version = "1.0.136", features = ["derive"] }
+thiserror = "1.0.30"
+derive_more = { version = "0.99.17", features = ["deref"] }
+uuid = { version = "1.0.0-alpha.1", features = ["v5"] }
 
 [dependencies.mongodb]
 version = "1.2.2"
