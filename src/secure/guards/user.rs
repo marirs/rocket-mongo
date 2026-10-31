@@ -25,12 +25,12 @@ impl<'r> FromRequest<'r> for UserGuard {
         let backend = try_outcome!(request
             .guard::<&State<MongodbBackend>>()
             .await
-            .map_failure(|_| (Status::InternalServerError, Error::InternalError)));
+            .map_error(|_| (Status::InternalServerError, Error::InternalError)));
 
         super::get_user_from_request(request, backend)
             .await
             .map(Self)
-            .into_outcome(Status::BadRequest)
+            .or_error(Status::BadRequest)
     }
 }
 
@@ -42,7 +42,7 @@ impl<'r> FromRequest<'r> for AdminGuard {
         let backend = try_outcome!(request
             .guard::<&State<MongodbBackend>>()
             .await
-            .map_failure(|_| (Status::InternalServerError, Error::InternalError)));
+            .map_error(|_| (Status::InternalServerError, Error::InternalError)));
 
         super::get_user_from_request(request, backend)
             .await
@@ -53,6 +53,6 @@ impl<'r> FromRequest<'r> for AdminGuard {
                     Err(Error::ForbiddenAccess)
                 }
             })
-            .into_outcome(Status::BadRequest)
+            .or_error(Status::BadRequest)
     }
 }
